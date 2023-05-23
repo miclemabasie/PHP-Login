@@ -1,3 +1,8 @@
+<?php
+
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -68,8 +73,18 @@
     <div class="links">
         <a href="#">About</a>
         <a href="#">Contact</a>
-        <a href="./login.php">Login</a>
-        <a href="./registration.php">Sign up</a>
+        <?php
+        if (isset($_SESSION["useruid"])) {
+            echo "<a href='./accoun.php'>Account</a>";
+            echo "<a href='./courses.php'>Courses</a>";
+            echo "<a href='./includes/logout.inc.php'>Logout</a>";
+        } else {
+            echo "<a href='./login.php'>Login</a>";
+            echo "<a href='./registration.php'>Sign up</a>";
+        }
+        ?>
+
+
     </div>
 </nav>
 
